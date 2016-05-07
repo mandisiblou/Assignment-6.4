@@ -19,7 +19,7 @@ public class CodeFactoryImp implements CodeFactory {
             factory = new CodeFactoryImp();
         return factory;
     }
-    public Code createCode(String codeId, String name) {
+    public Code createCode(Long codeId, String name) {
         Code code = new Code
                 .Builder()
                 .codeId(codeId)

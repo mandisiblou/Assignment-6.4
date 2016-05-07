@@ -23,14 +23,14 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_YEAR = "year";
+    public static final String COLUMN_YEAR = "yearOfBirth";
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " TEXT  PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_NAME + " TEXT  NOT NULL , "
-            + COLUMN_YEAR + " INTEGER NOT NULL );";
+            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_NAME + " TEXT  NOT NULL, "
+            + COLUMN_YEAR + " TEXT  NOT NULL );";
 
 
     public PersonRepositoryImpl(Context context) {
@@ -46,7 +46,7 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
     }
 
     @Override
-    public Person findById(String id) {
+    public Person findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -61,12 +61,12 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Person Person = new Person.Builder()
-                    .id(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+            final Person person = new Person.Builder()
+                    .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                     .build();
-            return Person;
+            return person;
         } else {
             return null;
         }
@@ -93,10 +93,10 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
         values.put(COLUMN_ID, entity.getId());
         values.put(COLUMN_NAME, entity.getName());
         values.put(COLUMN_YEAR, entity.getYearOfBirth());
-        String id = "db.insertOrThrow(TABLE_NAME, null, values)";
+        Long id = db.insertOrThrow(TABLE_NAME, null, values);
         Person insertedEntity = new Person.Builder()
                 .copy(entity)
-                .id(new String(id))
+                .id(new Long(id))
                 .build();
         return insertedEntity;
     }
@@ -130,20 +130,20 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
     @Override
     public Set<Person> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Person> Person = new HashSet<>();
+        Set<Person> person = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
             do {
                 final Person setting = new Person.Builder()
-                        .id(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+                        .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                         .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                         .build();
-                Person.add(setting);
+                person.add(setting);
             } while (cursor.moveToNext());
         }
-        return Person;
+        return person;
     }
 
     @Override
@@ -154,4 +154,3 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
         return rowsDeleted;
     }
 }
-

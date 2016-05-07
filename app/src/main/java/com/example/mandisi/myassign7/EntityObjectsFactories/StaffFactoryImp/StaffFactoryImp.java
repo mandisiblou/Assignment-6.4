@@ -18,10 +18,10 @@ public class StaffFactoryImp implements StaffFactory {
             factory = new StaffFactoryImp();
         return factory;
     }
-    public Staffs createStaff(String SID, int yearOfBirth, String name) {
+    public Staffs createStaff(Long SID, int yearOfBirth, String name) {
         Staffs staffs = new Staffs
                 .Builder()
-                .SID(UUID.randomUUID().toString())
+                .SID(SID)
                 .yearOfBirth(yearOfBirth)
                 .name(name)
                 .build();

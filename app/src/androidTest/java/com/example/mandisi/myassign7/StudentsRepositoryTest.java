@@ -15,13 +15,13 @@ import java.util.Set;
  */
 public class StudentsRepositoryTest extends AndroidTestCase{
     private static final String TAG="STUDENTS TEST";
-    private String id;
+    private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
         StudentsRepositories repo = new StudentsRepositoryImp(this.getContext());
         // CREATE
         Students createEntity = new Students.Builder()
-                .studentID("FDCD")
+                .studentID(32563L)
                 .yearOfBirth(16)
                 .name("test12")
                 .build();

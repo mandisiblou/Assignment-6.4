@@ -9,11 +9,11 @@ import java.security.KeyStore;
 public class Person implements Serializable
 {
     private static final long serialVersionUID = 1L;
-    private String id;
+    private Long id;
     private String name;
     private int yearOfBirth;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -45,11 +45,11 @@ public class Person implements Serializable
 
 
     public static class Builder{
-        private  String id;
+        private  Long id;
         private String name;
         private int yearOfBirth;
 
-        public Builder id(String id) {
+        public Builder id(Long id) {
             this.id = id;
             return this;
         }

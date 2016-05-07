@@ -8,12 +8,12 @@ package com.example.mandisi.myassign7.EventsObjects;
  */
 public class Results {
     private static final long serialVersionUID = 1L;
-    private String resultsID;
+    private Long resultsID;
     private String questionName;
     private String questions;
     private String corrects;
 
-    public String getResultsID() {
+    public Long getResultsID() {
         return resultsID;
     }
 
@@ -39,12 +39,12 @@ public class Results {
         this.corrects = builder.corrects;
     }
     public static class Builder {
-        private String resultsID;
+        private Long resultsID;
         private String questionName;
         private String questions;
         private String corrects;
 
-        public Builder resultsID(String resultsID) {
+        public Builder resultsID(Long resultsID) {
             this.resultsID = resultsID;
             return this;
         }

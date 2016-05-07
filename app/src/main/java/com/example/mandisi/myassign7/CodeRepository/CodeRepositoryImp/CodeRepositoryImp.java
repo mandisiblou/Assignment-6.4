@@ -28,7 +28,7 @@ public class CodeRepositoryImp extends SQLiteOpenHelper implements CodeRepositor
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " TEXT  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_NAME + " TEXT  NOT NULL );";
 
 
@@ -45,7 +45,7 @@ public class CodeRepositoryImp extends SQLiteOpenHelper implements CodeRepositor
     }
 
     @Override
-    public Code findById(String id) {
+    public Code findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -59,11 +59,12 @@ public class CodeRepositoryImp extends SQLiteOpenHelper implements CodeRepositor
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Code Code = new Code.Builder()
-                    .codeId(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+            final Code code = new Code.Builder()
+                    .codeId(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .build();
-            return Code;
+
+            return code;
         } else {
             return null;
         }
@@ -89,10 +90,10 @@ public class CodeRepositoryImp extends SQLiteOpenHelper implements CodeRepositor
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getCodeId());
         values.put(COLUMN_NAME, entity.getName());
-        String id = "db.insertOrThrow(TABLE_NAME, null, values)";
+        Long id = db.insertOrThrow(TABLE_NAME, null, values);
         Code insertedEntity = new Code.Builder()
                 .copy(entity)
-                .codeId(new String(id))
+                .codeId(new Long(id))
                 .build();
         return insertedEntity;
     }
@@ -125,19 +126,19 @@ public class CodeRepositoryImp extends SQLiteOpenHelper implements CodeRepositor
     @Override
     public Set<Code> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Code> Person = new HashSet<>();
+        Set<Code> code = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
             do {
                 final Code setting = new Code.Builder()
-                        .codeId(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+                        .codeId(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                         .build();
-                Person.add(setting);
+                code.add(setting);
             } while (cursor.moveToNext());
         }
-        return Person;
+        return code;
     }
 
     @Override

@@ -6,13 +6,13 @@ import java.io.Serializable;
  * Created by 211014486 on 4/17/2016.
  */
 public class Addrec implements Serializable {
-    private String addressId;
+    private Long addressId;
     private String street;
     private String town;
     private String postCode;
     private String country;
 
-    public String getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
@@ -32,7 +32,7 @@ public class Addrec implements Serializable {
         return country;
     }
 
-    private Addrec() {
+    public Addrec() {
     }
     public Addrec(Builder builder) {
         this.addressId = builder.addressId;
@@ -42,13 +42,13 @@ public class Addrec implements Serializable {
         this.town = builder.town;
     }
     public static class Builder{
-        private String addressId;
+        private Long addressId;
         private String street;
         private String town;
         private String postCode;
         private String country;
 
-        public Builder addressId(String addressId) {
+        public Builder addressId(Long addressId) {
             this.addressId = addressId;
             return this;
         }

@@ -15,13 +15,13 @@ import java.util.Set;
  */
 public class PersonRepositoryTest extends AndroidTestCase {
     private static final String TAG="PERSON TEST";
-    private String id;
+    private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
         PersonRepositories repo = new PersonRepositoryImpl(this.getContext());
         // CREATE
         Person createEntity = new Person.Builder()
-                .id("FDCD")
+                .id(55L)
                 .name("test12")
                 .yearOfBirth(16)
                 .build();

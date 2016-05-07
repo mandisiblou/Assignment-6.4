@@ -19,7 +19,7 @@ public class AddrecFactoryImp implements AddrecFactory {
             factory = new AddrecFactoryImp();
         return factory;
     }
-    public Addrec createAddrec(String addressId, String street, String town, String postCode, String country) {
+    public Addrec createAddrec(Long addressId, String street, String town, String postCode, String country) {
         Addrec addrec = new Addrec
                 .Builder()
                 .addressId(addressId)

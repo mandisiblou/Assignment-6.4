@@ -18,7 +18,7 @@ public class QuestionsFatoryImp implements QuestionsFactory{
             factory = new QuestionsFatoryImp();
         return factory;
     }
-    public Questions createQuestions(String questionID, String questionName, String questions, String corrects) {
+    public Questions createQuestions(Long questionID, String questionName, String questions, String corrects) {
         Questions  questionz = new Questions
                 .Builder()
                 .questionID(questionID)

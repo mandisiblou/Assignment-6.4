@@ -15,13 +15,13 @@ import java.util.Set;
  */
 public class DepartmentRepositoryTest extends AndroidTestCase{
     private static final String TAG="DEPARTMENT TEST";
-    private String id;
+    private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
         DepartmentRepositories repo = new DepartmentRepositoryImp(this.getContext());
         // CREATE
         Department createEntity = new Department.Builder()
-                .SID("FDCD")
+                .SID(236L)
                 .name("test12")
                 .build();
         Department insertedEntity = repo.save(createEntity);

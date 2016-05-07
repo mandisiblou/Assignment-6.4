@@ -15,13 +15,13 @@ import java.util.Set;
  */
 public class StaffsRepositoryTest extends AndroidTestCase {
     private static final String TAG="STAFFS TEST";
-    private String id;
+    private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
         StaffsRepositories repo = new StaffsRepositoryImp(this.getContext());
         // CREATE
         Staffs createEntity = new Staffs.Builder()
-                .SID("FDCD")
+                .SID(545L)
                 .yearOfBirth(16)
                 .name("test12")
                 .build();

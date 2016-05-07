@@ -6,5 +6,5 @@ import com.example.mandisi.myassign7.ValuesObjects.Code;
 /**
  * Created by Nkuli on 2016-04-23.
  */
-public interface CodeRepositories extends Repository<Code,String> {
+public interface CodeRepositories extends Repository<Code,Long > {
 }

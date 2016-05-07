@@ -23,23 +23,23 @@ public class ResultsTest {
 
     @Test
     public void studenttestRoleCreation() throws Exception {
-        Results results = factory.createQuestions("ADMIN","A","Question1", "Answer1");
-        Assert.assertEquals(results.getResultsID(), "ADMIN");
+        Results results = factory.createQuestions(214L,"A","Question1", "Answer1");
+        Assert.assertEquals(214L, results.getResultsID(),4.4);
     }
 
 
     @Test
     public void testResultsUpdate() throws Exception {
-        Results results = factory.createQuestions("210","B","Question1", "Answer3");
-        //Assert.assertEquals(results.getResultsID(), results.getQuestionName(), results.getQuestions());
+        Results results = factory.createQuestions(214L,"B","Question1", "Answer3");
+        Assert.assertEquals(214L, results.getResultsID(),4.4);
 
         // Updated Name
         Results updateResults = new Results.Builder()
                 .copy(results)
-                .resultsID("Ntobs")
+                .resultsID(215L)
                 .build();
 
-        Assert.assertEquals(updateResults.getResultsID(), "Ntobs");
+        Assert.assertEquals(215L, updateResults.getResultsID(),4.4);
         //System.out.print(""+updateResults.getResultsID());
        // Assert.assertEquals(results.getQuestionName(), updateResults.getQuestionName());
        // Assert.assertEquals(results.getQuestions(), updateResults.getQuestions());

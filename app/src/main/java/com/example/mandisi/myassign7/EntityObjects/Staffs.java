@@ -8,11 +8,11 @@ import java.security.KeyStore;
 
 public class Staffs implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String SID;
+    private Long SID;
     private int yearOfBirth;
     private String name;
 
-    public String getSID() {
+    public Long getSID() {
         return SID;
     }
 
@@ -35,11 +35,11 @@ public class Staffs implements Serializable {
     }
 
     public static class Builder{
-        private String SID;
+        private Long SID;
         private int yearOfBirth;
         private String name;
 
-        public Builder SID(String SID) {
+        public Builder SID(Long SID) {
             this.SID = SID;
             return this;
         }

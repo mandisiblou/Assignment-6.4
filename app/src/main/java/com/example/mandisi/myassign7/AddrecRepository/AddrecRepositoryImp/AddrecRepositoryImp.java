@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Nkuli on 2016-04-24.
+ * Created by Mandisi on 2016-04-24.
  */
 public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepositories{
     public static final String TABLE_NAME = "addrec";
@@ -31,7 +31,7 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " TEXT  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_STREET + " TEXT  NOT NULL, "
             + COLUMN_TOWN + " TEXT  NOT NULL, "
             + COLUMN_CODE + " TEXT  NOT NULL, "
@@ -51,7 +51,7 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
     }
 
     @Override
-    public Addrec findById(String id) {
+    public Addrec findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -69,7 +69,7 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
                 null);
         if (cursor.moveToFirst()) {
             final Addrec Addrec = new Addrec.Builder()
-                    .addressId(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+                    .addressId(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .street(cursor.getString(cursor.getColumnIndex(COLUMN_STREET)))
                     .town(cursor.getString(cursor.getColumnIndex(COLUMN_TOWN)))
                     .postCode(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))
@@ -104,10 +104,10 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
         values.put(COLUMN_TOWN, entity.getTown());
         values.put(COLUMN_CODE, entity.getPostCode());
         values.put(COLUMN_COUNTRY, entity.getCountry());
-        String id = "db.insertOrThrow(TABLE_NAME, null, values)";
+        Long id = db.insertOrThrow(TABLE_NAME, null, values);
         Addrec insertedEntity = new Addrec.Builder()
                 .copy(entity)
-                .addressId(new String(id))
+                .addressId(new Long(id))
                 .build();
         return insertedEntity;
     }
@@ -149,7 +149,7 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
         if (cursor.moveToFirst()) {
             do {
                 final Addrec setting = new Addrec.Builder()
-                        .addressId(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+                        .addressId(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .street(cursor.getString(cursor.getColumnIndex(COLUMN_STREET)))
                         .town(cursor.getString(cursor.getColumnIndex(COLUMN_TOWN)))
                         .postCode(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))
@@ -169,3 +169,4 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
         return rowsDeleted;
     }
 }
+

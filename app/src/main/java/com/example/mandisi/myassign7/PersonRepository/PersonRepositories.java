@@ -6,6 +6,6 @@ import com.example.mandisi.myassign7.Repository;
 /**
  * Created by Nkuli on 2016-04-22.
  */
-public interface PersonRepositories extends Repository<Person,String>
+public interface PersonRepositories extends Repository<Person,Long>
 {
 }

@@ -5,6 +5,7 @@ package com.example.mandisi.myassign7.EntityObjectsFactories.StudentFactoryImp;
  */
 import com.example.mandisi.myassign7.EntityObjects.Students;
 import com.example.mandisi.myassign7.EntityObjectsFactories.StudentFactory;
+import com.example.mandisi.myassign7.ValuesObjects.Addrec;
 
 import java.util.UUID;
 
@@ -18,12 +19,13 @@ public class StudentFactoryImp implements StudentFactory {
             factory = new StudentFactoryImp();
         return factory;
     }
-    public Students createStudents(String studentID, int yearOfBirth, String name) {
+    public Students createStudents(Long studentID, int yearOfBirth, String name) {
         Students  students = new Students
                 .Builder()
-                .studentID(UUID.randomUUID().toString())
+                .studentID(studentID)
                 .yearOfBirth(yearOfBirth)
                 .name(name)
+                .addrec(new Addrec())
                 .build();
         return students;
     }

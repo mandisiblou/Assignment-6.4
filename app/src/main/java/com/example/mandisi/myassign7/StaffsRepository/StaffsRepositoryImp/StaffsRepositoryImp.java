@@ -22,17 +22,17 @@ public class StaffsRepositoryImp extends SQLiteOpenHelper implements StaffsRepos
     public static final String TABLE_NAME = "staffs";
     private SQLiteDatabase db;
 
-    public static final String COLUMN_ID = "id";
-    public static final String COLUMN_YEAR = "year";
-    public static final String COLUMN_NAME = "name";
-
+    public static final String COLUMN_ID = "SID";
+    public static final String COLUMN_YEAR = "yearOfBirth";
+    public static final String COLUMN_NAME= "name";
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " TEXT  PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_YEAR + " INTEGER  NOT NULL , "
-            + COLUMN_NAME + " TEXT NOT NULL );";
+            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_YEAR + " TEXT  NOT NULL, "
+            + COLUMN_NAME + " TEXT  NOT NULL );";
+
 
     public StaffsRepositoryImp(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
@@ -47,7 +47,7 @@ public class StaffsRepositoryImp extends SQLiteOpenHelper implements StaffsRepos
     }
 
     @Override
-    public Staffs findById(String id) {
+    public Staffs findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -62,12 +62,12 @@ public class StaffsRepositoryImp extends SQLiteOpenHelper implements StaffsRepos
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Staffs Staffs = new Staffs.Builder()
-                    .SID(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+            final Staffs staffs = new Staffs.Builder()
+                    .SID(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .build();
-            return Staffs;
+            return staffs;
         } else {
             return null;
         }
@@ -94,10 +94,10 @@ public class StaffsRepositoryImp extends SQLiteOpenHelper implements StaffsRepos
         values.put(COLUMN_ID, entity.getSID());
         values.put(COLUMN_YEAR, entity.getYearOfBirth());
         values.put(COLUMN_NAME, entity.getName());
-        String id = "db.insertOrThrow(TABLE_NAME, null, values)";
+        Long id = db.insertOrThrow(TABLE_NAME, null, values);
         Staffs insertedEntity = new Staffs.Builder()
                 .copy(entity)
-                .SID(new String(id))
+                .SID(new Long(id))
                 .build();
         return insertedEntity;
     }
@@ -131,20 +131,20 @@ public class StaffsRepositoryImp extends SQLiteOpenHelper implements StaffsRepos
     @Override
     public Set<Staffs> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Staffs> Staffs = new HashSet<>();
+        Set<Staffs> Addrec = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
             do {
                 final Staffs setting = new Staffs.Builder()
-                        .SID(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+                        .SID(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                         .build();
-                Staffs.add(setting);
+                Addrec.add(setting);
             } while (cursor.moveToNext());
         }
-        return Staffs;
+        return Addrec;
     }
 
     @Override
@@ -154,5 +154,4 @@ public class StaffsRepositoryImp extends SQLiteOpenHelper implements StaffsRepos
         close();
         return rowsDeleted;
     }
-
 }

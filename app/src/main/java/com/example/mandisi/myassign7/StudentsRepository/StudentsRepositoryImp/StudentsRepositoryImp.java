@@ -23,16 +23,16 @@ public class StudentsRepositoryImp extends SQLiteOpenHelper implements StudentsR
     public static final String TABLE_NAME = "students";
     private SQLiteDatabase db;
 
-    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_ID = "studentID";
+    public static final String COLUMN_YEAR = "yearOfBirth";
     public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_YEAR = "year";
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " TEXT  PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_NAME + " INTEGER  NOT NULL , "
-            + COLUMN_YEAR + " TEXT NOT NULL );";
+            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_YEAR + " TEXT  NOT NULL, "
+            + COLUMN_NAME + " TEXT  NOT NULL );";
 
 
     public StudentsRepositoryImp(Context context) {
@@ -48,7 +48,7 @@ public class StudentsRepositoryImp extends SQLiteOpenHelper implements StudentsR
     }
 
     @Override
-    public Students findById(String id) {
+    public Students findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -63,12 +63,12 @@ public class StudentsRepositoryImp extends SQLiteOpenHelper implements StudentsR
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Students Students = new Students.Builder()
-                    .studentID(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+            final Students students = new Students.Builder()
+                    .studentID(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .build();
-            return Students;
+            return students;
         } else {
             return null;
         }
@@ -95,10 +95,10 @@ public class StudentsRepositoryImp extends SQLiteOpenHelper implements StudentsR
         values.put(COLUMN_ID, entity.getSID());
         values.put(COLUMN_YEAR, entity.getYearOfBirth());
         values.put(COLUMN_NAME, entity.getName());
-        String id = "db.insertOrThrow(TABLE_NAME, null, values)";
+        Long id = db.insertOrThrow(TABLE_NAME, null, values);
         Students insertedEntity = new Students.Builder()
                 .copy(entity)
-                .studentID(new String(id))
+                .studentID(new Long(id))
                 .build();
         return insertedEntity;
     }
@@ -132,20 +132,20 @@ public class StudentsRepositoryImp extends SQLiteOpenHelper implements StudentsR
     @Override
     public Set<Students> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Students> Students = new HashSet<>();
+        Set<Students> students = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
             do {
                 final Students setting = new Students.Builder()
-                        .studentID(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+                        .studentID(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                         .build();
-                Students.add(setting);
+                students.add(setting);
             } while (cursor.moveToNext());
         }
-        return Students;
+        return students;
     }
 
     @Override

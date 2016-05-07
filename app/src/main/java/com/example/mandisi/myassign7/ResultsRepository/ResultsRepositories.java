@@ -6,5 +6,5 @@ import com.example.mandisi.myassign7.Repository;
 /**
  * Created by Nkuli on 2016-04-22.
  */
-public interface ResultsRepositories extends Repository<Results,String> {
+public interface ResultsRepositories extends Repository<Results,Long> {
 }

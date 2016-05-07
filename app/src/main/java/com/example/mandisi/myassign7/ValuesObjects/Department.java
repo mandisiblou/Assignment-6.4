@@ -7,10 +7,10 @@ import java.io.Serializable;
 
 
 public class Department implements Serializable {
-    private String SID;
+    private Long SID;
     private String name;
 
-    public String getSID() {
+    public Long getSID() {
         return SID;
     }
 
@@ -26,10 +26,10 @@ public class Department implements Serializable {
         this.name = builder.name;
     }
     public static class Builder {
-        private String SID;
+        private Long SID;
         private String name;
 
-        public Builder SID(String SID) {
+        public Builder SID(Long SID) {
             this.SID = SID;
             return this;
         }

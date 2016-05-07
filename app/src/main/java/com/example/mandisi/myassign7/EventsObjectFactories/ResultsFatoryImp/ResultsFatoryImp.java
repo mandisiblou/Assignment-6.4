@@ -21,7 +21,7 @@ public class ResultsFatoryImp implements ResultsFactory{
             factory = new ResultsFatoryImp();
         return factory;
     }
-    public Results createQuestions(String resultsID, String questionName, String questions, String corrects) {
+    public Results createQuestions(Long resultsID, String questionName, String questions, String corrects) {
         Results  questionz = new Results
                 .Builder()
                 .resultsID(resultsID)

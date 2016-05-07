@@ -22,17 +22,15 @@ public class PersonTest {
 
     @Test
     public void studenttestRoleCreation() throws Exception {
-        Person person = factory.createPerson("ADMIN", "mandisi", 32);
-        //Assert.assertEquals(person.getId(), person.getName(),person.getYearOfBirth());
-        //Assert.assertEquals("ADMIN",person.getId());
-        Assert.assertEquals("mandisi", person.getName());
+        Person person = factory.createPerson(211L, "mandisi", 32);
+        Assert.assertEquals(211L, person.getId(),4.4);
     }
 
 
     @Test
     public void testStudentUpdate() throws Exception {
-        Person person = factory.createPerson("213", "Blou", 24);
-        //Assert.assertEquals(person.getId(), person.getYearOfBirth(), person.getName());
+        Person person = factory.createPerson(213L, "Blou", 24);
+        Assert.assertEquals(213L, person.getId(),4.4);
 
         // Updated Name
 

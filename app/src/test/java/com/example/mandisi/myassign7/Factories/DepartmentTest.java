@@ -23,24 +23,24 @@ public class DepartmentTest {
 
     @Test
     public void studenttestRoleCreation() throws Exception {
-        Department department = factory.createDepartment("211", "A");
-        Assert.assertEquals(department.getSID(), "211");
+        Department department = factory.createDepartment(211L, "A");
+        Assert.assertEquals(211L, department.getSID(),4.4);
     }
 
 
     @Test
     public void testResultsUpdate() throws Exception {
-        Department department = factory.createDepartment("210", "B");
+        Department department = factory.createDepartment(210L, "B");
         //Assert.assertEquals(department.getSID(), department.getName());
-        Assert.assertEquals(department.getSID(),"210");
+        Assert.assertEquals(210L, department.getSID(),4.4);
 
         // Updated Name
         Department updateDepartment = new Department.Builder()
                 .copy(department)
-                .SID("Ntobs")
+                .SID(211L)
                 .build();
 
-        Assert.assertEquals(updateDepartment.getSID(), "Ntobs");
+        Assert.assertEquals(211L, updateDepartment.getSID(),4.4);
        // Assert.assertEquals(department.getName(), updateDepartment.getName());
     }
 }

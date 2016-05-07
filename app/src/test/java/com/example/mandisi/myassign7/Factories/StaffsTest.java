@@ -23,25 +23,25 @@ public class StaffsTest {
 
     @Test
     public void studenttestRoleCreation() throws Exception {
-        Staffs staffs = factory.createStaff("211", 16, "mandisi");
-        Assert.assertEquals(staffs.getName(), "mandisi");
+        Staffs staffs = factory.createStaff(215L, 16, "mandisi");
+        Assert.assertEquals(215L, staffs.getSID(),4.4);
     }
 
 
     @Test
     public void testStudentUpdate() throws Exception {
-        Staffs staffs = factory.createStaff("213", 12, "Blou");
-       // Assert.assertEquals(staffs.getSID(), staffs.getYearOfBirth(), staffs.getName());
+        Staffs staffs = factory.createStaff(213L, 12, "Blou");
+        Assert.assertEquals(213L, staffs.getSID(),4.4);
 
         // Updated Name
 
         Staffs updateStaffs = new Staffs.Builder()
                 .copy(staffs)
-                .name("Ntobs")
+                .SID(216L)
                 .build();
 
         //Assert.assertEquals(updateStaffs.getSID(), "Ntobs");
-        Assert.assertEquals("Ntobs", updateStaffs.getName());
+        Assert.assertEquals(216L, updateStaffs.getSID(),4.4);
        // Assert.assertEquals(staffs.getYearOfBirth(), updateStaffs.getYearOfBirth());
     }
 }

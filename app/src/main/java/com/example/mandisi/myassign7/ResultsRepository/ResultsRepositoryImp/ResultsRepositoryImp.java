@@ -22,16 +22,19 @@ public class ResultsRepositoryImp extends SQLiteOpenHelper implements ResultsRep
     public static final String TABLE_NAME = "results";
     private SQLiteDatabase db;
 
-    public static final String COLUMN_ID = "id";
-    public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_ANSWEAR = "answear";
+    public static final String COLUMN_ID = "resultsID";
+    public static final String COLUMN_NAME = "questionName";
+    public static final String COLUMN_QUESTIONS = "questions";
+    public static final String COLUMN_CORRECTS = "corrects";
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " TEXT  PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_NAME + " TEXT  NOT NULL , "
-            + COLUMN_ANSWEAR + " TEXT NOT NULL );";
+            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_NAME + " TEXT  NOT NULL, "
+            + COLUMN_QUESTIONS + " TEXT  NOT NULL, "
+            + COLUMN_CORRECTS + " TEXT  NOT NULL );";
+
 
     public ResultsRepositoryImp(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
@@ -46,7 +49,7 @@ public class ResultsRepositoryImp extends SQLiteOpenHelper implements ResultsRep
     }
 
     @Override
-    public Results findById(String id) {
+    public Results findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -54,19 +57,21 @@ public class ResultsRepositoryImp extends SQLiteOpenHelper implements ResultsRep
                 new String[]{
                         COLUMN_ID,
                         COLUMN_NAME,
-                        COLUMN_ANSWEAR},
+                        COLUMN_QUESTIONS,
+                        COLUMN_CORRECTS},
                 COLUMN_ID + " =? ",
                 new String[]{String.valueOf(id)},
                 null,
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Results Results = new Results.Builder()
-                    .resultsID(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+            final Results results = new Results.Builder()
+                    .resultsID(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .questionName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
-                    .corrects(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWEAR)))
+                    .questions(cursor.getString(cursor.getColumnIndex(COLUMN_QUESTIONS)))
+                    .corrects(cursor.getString(cursor.getColumnIndex(COLUMN_CORRECTS)))
                     .build();
-            return Results;
+            return results;
         } else {
             return null;
         }
@@ -92,11 +97,12 @@ public class ResultsRepositoryImp extends SQLiteOpenHelper implements ResultsRep
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getResultsID());
         values.put(COLUMN_NAME, entity.getQuestionName());
-        values.put(COLUMN_ANSWEAR, entity.getCorrects());
-        String id = "db.insertOrThrow(TABLE_NAME, null, values)";
+        values.put(COLUMN_QUESTIONS, entity.getQuestions());
+        values.put(COLUMN_CORRECTS, entity.getCorrects());
+        Long id = db.insertOrThrow(TABLE_NAME, null, values);
         Results insertedEntity = new Results.Builder()
                 .copy(entity)
-                .resultsID(new String(id))
+                .resultsID(new Long(id))
                 .build();
         return insertedEntity;
     }
@@ -107,7 +113,8 @@ public class ResultsRepositoryImp extends SQLiteOpenHelper implements ResultsRep
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getResultsID());
         values.put(COLUMN_NAME, entity.getQuestionName());
-        values.put(COLUMN_ANSWEAR, entity.getCorrects());
+        values.put(COLUMN_QUESTIONS, entity.getQuestions());
+        values.put(COLUMN_CORRECTS, entity.getCorrects());
         db.update(
                 TABLE_NAME,
                 values,
@@ -130,20 +137,21 @@ public class ResultsRepositoryImp extends SQLiteOpenHelper implements ResultsRep
     @Override
     public Set<Results> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Results> Results = new HashSet<>();
+        Set<Results> results = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
             do {
-                final Results setting = new Results.Builder()
-                        .resultsID(cursor.getString(cursor.getColumnIndex(COLUMN_ID)))
+                final Results settings = new Results.Builder()
+                        .resultsID(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .questionName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
-                        .corrects(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWEAR)))
+                        .questions(cursor.getString(cursor.getColumnIndex(COLUMN_QUESTIONS)))
+                        .corrects(cursor.getString(cursor.getColumnIndex(COLUMN_CORRECTS)))
                         .build();
-                Results.add(setting);
+                results.add(settings);
             } while (cursor.moveToNext());
         }
-        return Results;
+        return results;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class DepartmentFactoryImp implements DepartmentFactory {
             factory = new DepartmentFactoryImp();
         return factory;
     }
-    public Department createDepartment(String SID, String name) {
+    public Department createDepartment(Long SID, String name) {
         Department department = new Department
                 .Builder()
                 .SID(SID)

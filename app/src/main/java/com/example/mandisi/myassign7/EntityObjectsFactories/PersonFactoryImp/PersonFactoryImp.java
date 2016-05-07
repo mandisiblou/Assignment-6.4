@@ -20,10 +20,10 @@ public class PersonFactoryImp implements PersonFactory{
             factory = new PersonFactoryImp();
         return factory;
     }
-    public Person createPerson(String id, String name, int yearOfBirth) {
+    public Person createPerson(Long id, String name, int yearOfBirth) {
         Person  person = new Person
                 .Builder()
-                .id(UUID.randomUUID().toString())
+                .id(id)
                 .name(name)
                 .yearOfBirth(yearOfBirth)
                 .build();

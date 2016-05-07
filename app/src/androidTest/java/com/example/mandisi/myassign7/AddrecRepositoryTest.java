@@ -4,7 +4,6 @@ import android.test.AndroidTestCase;
 
 import com.example.mandisi.myassign7.AddrecRepository.AddrecRepositories;
 import com.example.mandisi.myassign7.AddrecRepository.AddrecRepositoryImp.AddrecRepositoryImp;
-import com.example.mandisi.myassign7.EntityObjects.Person;
 import com.example.mandisi.myassign7.ValuesObjects.Addrec;
 
 import junit.framework.Assert;
@@ -12,17 +11,17 @@ import junit.framework.Assert;
 import java.util.Set;
 
 /**
- * Created by Nkuli on 2016-04-24.
+ * Created by Mandisi on 2016-04-24.
  */
 public class AddrecRepositoryTest extends AndroidTestCase{
     private static final String TAG="ADDRESS TEST";
-    private String id;
+    private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
         AddrecRepositories repo = new AddrecRepositoryImp(this.getContext());
         // CREATE
         Addrec createEntity = new Addrec.Builder()
-                .addressId("26")
+                .addressId(38128925L)
                 .street("anzio")
                 .town("obs")
                 .postCode("7925")
@@ -39,8 +38,6 @@ public class AddrecRepositoryTest extends AndroidTestCase{
         //READ ENTITY
         Addrec entity = repo.findById(id);
         Assert.assertNotNull(TAG+" READ ENTITY",entity);
-
-
 
         //UPDATE ENTITY
         Addrec updateEntity = new Addrec.Builder()

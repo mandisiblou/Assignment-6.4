@@ -6,11 +6,11 @@ package com.example.mandisi.myassign7.ValuesObjects;
 import java.io.Serializable;
 
 public class Code implements Serializable {
-    private String codeId;
+    private Long codeId;
     private static final long serialVersionUID = 1L;
     private String name;
 
-    public String getCodeId() {
+    public Long  getCodeId() {
         return codeId;
     }
 
@@ -28,11 +28,11 @@ public class Code implements Serializable {
     }
 
     public static class Builder {
-        private String codeId;
+        private Long  codeId;
         private static final long serialVersionUID = 1L;
         private String name;
 
-        public Builder codeId(String codeId) {
+        public Builder codeId(Long  codeId) {
             this.codeId = codeId;
             return this;
         }

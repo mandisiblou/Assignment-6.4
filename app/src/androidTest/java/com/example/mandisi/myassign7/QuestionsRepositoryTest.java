@@ -15,13 +15,13 @@ import java.util.Set;
  */
 public class QuestionsRepositoryTest extends AndroidTestCase{
     private static final String TAG="QUESTIONS TEST";
-    private String id;
+    private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
         QuestionsRepositories repo = new QuestionsRepositoryImp(this.getContext());
         // CREATE
         Questions createEntity = new Questions.Builder()
-                .questionID("FDCD")
+                .questionID(848L)
                 .questionName("B")
                 .questions("B")
                 .corrects("8")

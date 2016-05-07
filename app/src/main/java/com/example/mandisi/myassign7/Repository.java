@@ -1,7 +1,7 @@
 package com.example.mandisi.myassign7;
 
 /**
- * Created by Nkuli on 2016-04-22.
+ * Created by Mandisi on 2016-04-22.
  */
 import java.util.Set;
 

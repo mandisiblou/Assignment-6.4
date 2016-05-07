@@ -1,9 +1,12 @@
 package com.example.mandisi.myassign7.Factories;
 
+import com.example.mandisi.myassign7.EntityObjects.Staffs;
 import com.example.mandisi.myassign7.EntityObjects.Students;
 
+import com.example.mandisi.myassign7.EntityObjectsFactories.StaffFactory;
 import com.example.mandisi.myassign7.EntityObjectsFactories.StudentFactory;
 import com.example.mandisi.myassign7.EntityObjectsFactories.StudentFactoryImp.StudentFactoryImp;
+import com.example.mandisi.myassign7.ValuesObjects.Addrec;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,16 +24,15 @@ public class StudentTest {
 
     @Test
     public void studenttestRoleCreation() throws Exception {
-        Students student = factory.createStudents("211", 16, "mandisi");
-        Assert.assertEquals(student.getName(), "mandisi");
+        Students student = factory.createStudents(211L, 16, "mandisi");
+        Assert.assertEquals(211L, student.getSID(),4.4);
+        //Addrec addrec = factory.
+       // Assert.assertEquals(student.getName(), "mandisi");
     }
-
 
     @Test
     public void testStudentUpdate() throws Exception {
-        Students students = factory.createStudents("213", 12, "Blou");
-       // Assert.assertEquals(students.getSID(), students.getYearOfBirth(), students.getName());
-
+        Students students = factory.createStudents(213L, 12, "Blou");
         // Updated Name
 
         Students updateStudent = new Students.Builder()

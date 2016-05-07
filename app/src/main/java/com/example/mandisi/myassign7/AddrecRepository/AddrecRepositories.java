@@ -6,5 +6,5 @@ import com.example.mandisi.myassign7.ValuesObjects.Addrec;
 /**
  * Created by Nkuli on 2016-04-24.
  */
-public interface AddrecRepositories extends Repository<Addrec,String> {
+public interface AddrecRepositories extends Repository<Addrec,Long> {
 }

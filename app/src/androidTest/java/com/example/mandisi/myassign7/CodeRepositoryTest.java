@@ -15,13 +15,13 @@ import java.util.Set;
  */
 public class CodeRepositoryTest extends AndroidTestCase{
     private static final String TAG="CODE TEST";
-    private String id;
+    private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
         CodeRepositories repo = new CodeRepositoryImp(this.getContext());
         // CREATE
         Code createEntity = new Code.Builder()
-                .codeId("FDCD")
+                .codeId(3000000L)
                 .name("test12")
                 .build();
         Code insertedEntity = repo.save(createEntity);

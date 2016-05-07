@@ -5,12 +5,12 @@ package com.example.mandisi.myassign7.ValuesObjects;
  */
 public class Questions {
     private static final long serialVersionUID = 1L;
-    private String questionID;
+    private Long questionID;
     private String questionName;
     private String questions;
     private String corrects;
 
-    public String getQuestionID() {
+    public Long getQuestionID() {
         return questionID;
     }
 
@@ -36,12 +36,12 @@ public class Questions {
         this.corrects = builder.corrects;
     }
     public static class Builder {
-        private String questionID;
+        private Long questionID;
         private String questionName;
         private String questions;
         private String corrects;
 
-        public Builder questionID(String questionID) {
+        public Builder questionID(Long questionID) {
             this.questionID = questionID;
             return this;
         }
