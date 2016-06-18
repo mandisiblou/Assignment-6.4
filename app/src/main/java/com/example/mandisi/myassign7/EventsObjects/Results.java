@@ -3,9 +3,6 @@ package com.example.mandisi.myassign7.EventsObjects;
 /**
  * Created by 211014486 on 4/17/2016.
  */
-/**
- * Created by Nkuli on 2016-04-09.
- */
 public class Results {
     private static final long serialVersionUID = 1L;
     private Long resultsID;

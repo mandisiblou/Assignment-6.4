@@ -6,7 +6,7 @@ import com.android.internal.util.Predicate;
 import com.android.volley.toolbox.ImageLoader;
 
 /**
- * Created by hashcode on 2016/04/17.
+ * Created by Mandisi on 2016/04/17.
  */
 public class HashBitmapCache extends LruCache<String, Bitmap> implements
         ImageLoader.ImageCache {

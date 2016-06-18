@@ -1,7 +1,7 @@
 package com.example.mandisi.myassign7.conf.util;
 
 /**
- * Created by hashcode on 2016/02/21.
+ * Created by Mandisi on 2016/02/21.
  */
 public enum DomainState {
     ACTIVE,

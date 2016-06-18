@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Nkuli on 2016-04-23.
+ * Created by Mandisi on 2016-04-23.
  */
 public class CodeRepositoryImp extends SQLiteOpenHelper implements CodeRepositories{
     public static final String TABLE_NAME = "code";
@@ -28,7 +28,7 @@ public class CodeRepositoryImp extends SQLiteOpenHelper implements CodeRepositor
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " LONG  PRIMARY KEY, "
             + COLUMN_NAME + " TEXT  NOT NULL );";
 
 

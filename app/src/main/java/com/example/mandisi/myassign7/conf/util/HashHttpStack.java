@@ -27,7 +27,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * Created by hashcode on 2016/04/16.
+ * Created by Mandisi on 2016/04/16.
  */
 public class HashHttpStack implements HttpStack {
 

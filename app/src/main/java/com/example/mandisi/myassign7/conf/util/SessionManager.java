@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
 /**
- * Created by hashcode on 2016/04/09.
+ * Created by Mandisi on 2016/04/09.
  */
 public class SessionManager {
 

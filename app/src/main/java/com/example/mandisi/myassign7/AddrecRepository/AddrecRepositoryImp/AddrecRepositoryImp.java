@@ -31,7 +31,7 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " LONG  PRIMARY KEY, "
             + COLUMN_STREET + " TEXT  NOT NULL, "
             + COLUMN_TOWN + " TEXT  NOT NULL, "
             + COLUMN_CODE + " TEXT  NOT NULL, "
@@ -54,6 +54,8 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
     public Addrec findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
+        Addrec addres = new Addrec();
+        open();
         Cursor cursor = db.query(
                 TABLE_NAME,
                 new String[]{
@@ -63,22 +65,18 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
                         COLUMN_CODE,
                         COLUMN_COUNTRY},
                 COLUMN_ID + " =? ",
-                new String[]{String.valueOf(id)},
-                null,
-                null,
-                null);
+                new String[]{String.valueOf(id)},null,null,null,null);
         if (cursor.moveToFirst()) {
-            final Addrec Addrec = new Addrec.Builder()
+            final Addrec addrec = new Addrec.Builder()
                     .addressId(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .street(cursor.getString(cursor.getColumnIndex(COLUMN_STREET)))
                     .town(cursor.getString(cursor.getColumnIndex(COLUMN_TOWN)))
                     .postCode(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))
                     .country(cursor.getString(cursor.getColumnIndex(COLUMN_COUNTRY)))
                     .build();
-            return Addrec;
-        } else {
-            return null;
+            return addres = addrec;
         }
+            return addres;
     }
 
     @Override
@@ -143,7 +141,7 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
     @Override
     public Set<Addrec> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Addrec> Addrec = new HashSet<>();
+        Set<Addrec> addrec = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
@@ -155,10 +153,10 @@ public class AddrecRepositoryImp extends SQLiteOpenHelper implements AddrecRepos
                         .postCode(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))
                         .country(cursor.getString(cursor.getColumnIndex(COLUMN_COUNTRY)))
                         .build();
-                Addrec.add(setting);
+                addrec.add(setting);
             } while (cursor.moveToNext());
         }
-        return Addrec;
+        return addrec;
     }
 
     @Override

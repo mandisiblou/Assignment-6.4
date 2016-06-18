@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Nkuli on 2016-04-22.
+ * Created by Mandisi on 2016-04-22.
  */
 public class StaffsRepositoryImp extends SQLiteOpenHelper implements StaffsRepositories{
     public static final String TABLE_NAME = "staffs";

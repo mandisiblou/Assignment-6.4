@@ -41,7 +41,7 @@ public class Addrec implements Serializable {
         this.street = builder.street;
         this.town = builder.town;
     }
-    public static class Builder{
+    public static class Builder {
         private Long addressId;
         private String street;
         private String town;
@@ -72,6 +72,7 @@ public class Addrec implements Serializable {
             this.country = country;
             return this;
         }
+
         public Builder copy(Addrec value) {
             this.addressId = value.addressId;
             this.country = value.country;
@@ -80,8 +81,10 @@ public class Addrec implements Serializable {
             this.town = value.town;
             return this;
         }
+
         public Addrec build() {
             return new Addrec(this);
         }
+
     }
 }

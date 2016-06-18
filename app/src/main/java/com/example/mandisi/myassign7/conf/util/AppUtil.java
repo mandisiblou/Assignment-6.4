@@ -18,7 +18,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by hashcode on 2016/04/17.
+ * Created by Mandisi on 2016/04/17.
  */
 public class AppUtil {
     public static String getStringLocation(Map<String, String> location) {

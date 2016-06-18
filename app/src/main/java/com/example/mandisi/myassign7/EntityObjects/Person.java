@@ -17,12 +17,6 @@ public class Person implements Serializable
         return id;
     }
 
-    /**
-     * Create a person with given name and age.
-     */
-
-
-
     public String getName() {
         return name;
     }
@@ -31,18 +25,14 @@ public class Person implements Serializable
         return yearOfBirth;
     }
 
-
-
-    private Person() {
+    public Person() {
     }
 
-    private Person(Builder builder) {
+    public Person(Builder builder) {
         this.name = builder.name;
         this.yearOfBirth = builder.yearOfBirth;
         this.id = builder.id;
     }
-
-
 
     public static class Builder{
         private  Long id;
@@ -87,7 +77,6 @@ public class Person implements Serializable
         if (yearOfBirth != person.yearOfBirth) return false;
         if (id != null ? !id.equals(person.id) : person.id != null) return false;
         return name != null ? name.equals(person.name) : person.name == null;
-
     }
 
     @Override

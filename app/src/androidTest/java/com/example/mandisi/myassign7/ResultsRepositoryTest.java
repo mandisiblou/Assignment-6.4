@@ -11,7 +11,7 @@ import junit.framework.Assert;
 import java.util.Set;
 
 /**
- * Created by Nkuli on 2016-04-24.
+ * Created by Mandisi on 2016-04-24.
  */
 public class ResultsRepositoryTest extends AndroidTestCase{
     private static final String TAG="RESULTS TEST";

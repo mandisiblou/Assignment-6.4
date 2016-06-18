@@ -30,5 +30,6 @@ import org.junit.runners.Suite;
         DepartmentTest.class,
         CodeTest.class,
         StaffsTest.class,
+        PersonTest.class,
         ResultsTest.class})
 public class AppUnitTestSuite {}

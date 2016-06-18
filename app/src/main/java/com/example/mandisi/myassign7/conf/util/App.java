@@ -12,7 +12,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.mandisi.myassign7.conf.databases.HashBitmapCache;
 
 /**
- * Created by hashcode on 2016/04/16.
+ * Created by Mandisi on 2016/04/16.
  */
 public class App extends Application {
 

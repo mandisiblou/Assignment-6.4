@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light"
+        android:id="@+id/codeName"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04"
+        android:textColor="@color/abc_input_method_navigation_guard" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What is the general speed limit on a freeway?"
+        android:id="@+id/que1"
+        android:textColor="@color/abc_input_method_navigation_guard"
+        android:layout_weight="0.04" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A - 45"
+            android:id="@+id/rdb1" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B - 100"
+            android:id="@+id/rdb2" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C - 150"
+            android:id="@+id/rdb3"
+            android:layout_weight="23.55" />
+    </RadioGroup>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A safe following distance is when a vehicle in front of you suddenly stop you could.."
+                android:id="@+id/que2"
+                android:textColor="@color/abc_input_method_navigation_guard"
+                android:layout_weight="0.04" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A - Stop without swerving"
+                android:id="@+id/rdb4" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B - Swerve and stop next to it"
+                android:id="@+id/rdb5" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C - Swerve and pass"
+                android:id="@+id/rdb6" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The last action you must take before changing a lane is to..."
+        android:id="@+id/que3"
+        android:textColor="@color/abc_input_method_navigation_guard"
+        android:layout_weight="0.04" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.04">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A - Switch on your indicator"
+            android:id="@+id/rdb7" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B - check the blind spot"
+            android:id="@+id/rdb8" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C - Look in the rear view mirror"
+            android:id="@+id/rdb9" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:text="Start Test"
+        android:id="@+id/startbutton"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.05" />
+</LinearLayout>

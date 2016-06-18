@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Select your learner license code"
+        android:id="@+id/textView"
+        android:textColor="@color/abc_input_method_navigation_guard"
+        android:layout_weight="0.13"
+        android:layout_gravity="center_horizontal" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.13">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Code 1 - Motocycles"
+            android:id="@+id/codeButton"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Code 2 - Light Vehicle"
+            android:id="@+id/codeButton1" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Code 3 - Heavy"
+            android:id="@+id/codeButton2" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:text="Start Test"
+        android:id="@+id/startbutton"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.05" />
+</LinearLayout>

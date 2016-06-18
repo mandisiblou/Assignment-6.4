@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Motocycle"
+        android:id="@+id/codeName"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04"
+        android:textColor="@color/abc_input_method_navigation_guard" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The direction of a traffic officer takes precedence..."
+        android:id="@+id/que1"
+        android:textColor="@color/abc_input_method_navigation_guard"
+        android:layout_weight="0.04" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A - Ony at an accident"
+            android:id="@+id/rdb1" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B -  Always"
+            android:id="@+id/rdb2" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C - Only at traffic lights"
+            android:id="@+id/rdb3"
+            android:layout_weight="23.55" />
+    </RadioGroup>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unless otherwise shown by a sign, a general speed in town or city is...kh/h."
+                android:id="@+id/que2"
+                android:textColor="@color/abc_input_method_navigation_guard"
+                android:layout_weight="0.04" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A - 60"
+                android:id="@+id/rdb4" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B - 100"
+                android:id="@+id/rdb5" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C - 120"
+                android:id="@+id/rdb6" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What is the speed limit on a freeway when another vehicle is being towed with a rope?"
+        android:id="@+id/que3"
+        android:textColor="@color/abc_input_method_navigation_guard"
+        android:layout_weight="0.04" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.04">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A - 60 km/h"
+            android:id="@+id/rdb7" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B - 50 km/h"
+            android:id="@+id/rdb8" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C - 30 km/h"
+            android:id="@+id/rdb9" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:text="Start Test"
+        android:id="@+id/startbutton"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.05" />
+</LinearLayout>

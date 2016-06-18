@@ -3,7 +3,7 @@ package com.example.mandisi.myassign7.conf.security;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
- * Created by hashcode on 2016/04/10.
+ * Created by Mandisi on 2016/04/10.
  */
 public class Login {
 

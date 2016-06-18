@@ -17,10 +17,10 @@ import java.util.Set;
 
 
 /**
- * Created by Nkuli on 2016-04-22.
+ * Created by Mandisi on 2016-04-22.
  */
 public class StudentsRepositoryImp extends SQLiteOpenHelper implements StudentsRepositories{
-    public static final String TABLE_NAME = "students";
+    public static final String TABLE_NAME = "student";
     private SQLiteDatabase db;
 
     public static final String COLUMN_ID = "studentID";
@@ -30,7 +30,7 @@ public class StudentsRepositoryImp extends SQLiteOpenHelper implements StudentsR
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " LONG  PRIMARY KEY, "
             + COLUMN_YEAR + " TEXT  NOT NULL, "
             + COLUMN_NAME + " TEXT  NOT NULL );";
 

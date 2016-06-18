@@ -15,7 +15,7 @@ import com.example.mandisi.myassign7.PersonRepository.PersonRepositories;
 import com.example.mandisi.myassign7.conf.databases.DBConstants;
 
 /**
- * Created by Nkuli on 2016-04-22.
+ * Created by Mandisi on 2016-04-22.
  */
 public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepositories{
     public static final String TABLE_NAME = "person";
@@ -28,9 +28,9 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " LONG  PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " LONG  PRIMARY KEY, "
             + COLUMN_NAME + " TEXT  NOT NULL, "
-            + COLUMN_YEAR + " TEXT  NOT NULL );";
+            + COLUMN_YEAR + " INTEGER  NOT NULL );";
 
 
     public PersonRepositoryImpl(Context context) {
@@ -49,6 +49,8 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
     public Person findById(Long id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
+        Person addres = new Person();
+        open();
         Cursor cursor = db.query(
                 TABLE_NAME,
                 new String[]{
@@ -56,20 +58,16 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
                         COLUMN_NAME,
                         COLUMN_YEAR},
                 COLUMN_ID + " =? ",
-                new String[]{String.valueOf(id)},
-                null,
-                null,
-                null);
+                new String[]{String.valueOf(id)},null,null,null,null);
         if (cursor.moveToFirst()) {
-            final Person person = new Person.Builder()
+            final Person addrec = new Person.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                     .build();
-            return person;
-        } else {
-            return null;
+            return addres = addrec;
         }
+        return addres;
     }
 
     @Override
@@ -130,7 +128,7 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
     @Override
     public Set<Person> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Person> person = new HashSet<>();
+        Set<Person> addrec = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
@@ -140,10 +138,10 @@ public class PersonRepositoryImpl extends SQLiteOpenHelper implements PersonRepo
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                         .yearOfBirth(cursor.getInt(cursor.getColumnIndex(COLUMN_YEAR)))
                         .build();
-                person.add(setting);
+                addrec.add(setting);
             } while (cursor.moveToNext());
         }
-        return person;
+        return addrec;
     }
 
     @Override
